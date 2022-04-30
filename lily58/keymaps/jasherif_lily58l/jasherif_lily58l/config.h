@@ -67,11 +67,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
-#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#    define ENABLE_RGB_MATRIX_TYPING_HEATMAP
-#    define RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS 33
-
-
 #    ifdef RGB_MATRIX_STARTUP_MODE   
 #       undef RGB_MATRIX_STARTUP_MODE
 #    endif

@@ -33,6 +33,7 @@ enum custom_keycodes { QWERTY = SAFE_RANGE, LOWER, RAISE, ADJUST, };
 
 #ifdef OLED_ENABLE
 #include "../bongo.h"
+// #include "../s75.h"
 #endif
 
 extern uint8_t is_master;
@@ -69,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  `   |  F1  |  F2  |  F3  |  F4  |  F5  |                    |      |      |      |  [   |   ]  | Del  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |  F6  |  F7  |  F8  |  F9  |  F10 |                    |      |      |      |      |      |      |
+ * | Tab  |  F6  |  F7  |  F8  |  F9  |  F10 |                    |      |RGB_SP|      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift|  F11 |  F12 |      |  -   |  +   |-------.    ,-------|      |      |RGB_HI|RGB_SI|RGB_VI|RShift|
+ * |LShift|  F11 |  F12 |      |  -   |  +   |-------.    ,-------|      |RGB_sp|RGB_HI|RGB_SI|RGB_VI|RShift|
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LCTRL |      |      |      |  _   |  =   |-------|    |-------|      | RGB M|RGB_HD|RGB_SD|RGB_VD|Enter |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -81,8 +82,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT( \
  KC_GRAVE, KC_F1,   KC_F2,   KC_F3,   KC_F4,       KC_F5,                     XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, KC_DEL, \
- _______,  KC_F6,   KC_F7,   KC_F8,   KC_F9,       KC_F10,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
- _______,  KC_F11,  KC_F12,  XXXXXXX, KC_MINUS,    S(KC_EQL),                 XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI, KC_RSFT,\
+ _______,  KC_F6,   KC_F7,   KC_F8,   KC_F9,       KC_F10,                    XXXXXXX, RGB_SPI, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+ _______,  KC_F11,  KC_F12,  XXXXXXX, KC_MINUS,    S(KC_EQL),                 XXXXXXX, RGB_SPD, RGB_HUI, RGB_SAI, RGB_VAI, KC_RSFT,\
  _______,  XXXXXXX, XXXXXXX, XXXXXXX, S(KC_MINUS), KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,\
                               _______, _______,    _______, _______, _______, _______, KC_UP,   KC_DOWN \
 ),
@@ -159,10 +160,10 @@ if (!is_keyboard_master())
 bool oled_task_user(void) {
   // update_log();
   if (is_keyboard_master()) {
-    return false;
+    // draw_bongo();
   } else {
-    // oled_write(read_logo(), false);
     draw_bongo();
+    // draw_s75();
   }
   return false;
 }
