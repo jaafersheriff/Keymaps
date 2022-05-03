@@ -29,8 +29,8 @@ struct pair_int_int pressed_keys_prev[KEYS_SIZE];
 uint8_t pressed_keys_index = 0;
 
 bool key_down = 0;
+
 char wpm[42];
-int _keys = 0;
 
 
 
@@ -320,7 +320,6 @@ static const char PROGMEM tap_minimal[TAP_FRAMES][ANIM_SIZE] =
 
 bool detect_key_down(void)
 {
-    _keys = 0;
 
     // store the previous cycle's cache
     for (uint8_t i = 0; i < KEYS_SIZE; ++i)
@@ -340,7 +339,6 @@ bool detect_key_down(void)
             {
                 pressed_keys[pressed_keys_index].first = x+1; // adding 1 to the row/col so that we can use 0 as a null-check
                 pressed_keys[pressed_keys_index].second = y+1;
-                _keys++;
             }
             else
             {
