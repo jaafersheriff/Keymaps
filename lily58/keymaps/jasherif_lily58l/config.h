@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #undef RGBLIGHT_ENABLE
 
-#define RGBLIGHT_SLEEP
+#undef RGBLIGHT_SLEEP
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_KEYPRESSES
@@ -41,6 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    endif
 #    define RGBLED_NUM 64  // Number of LEDs
 #    define DRIVER_LED_TOTAL RGBLED_NUM
+#    define RGB_MATRIX_LED_COUNT RGBLED_NUM
 
 #    ifdef RGBLED_SPLIT
 #       undef RGBLED_SPLIT
