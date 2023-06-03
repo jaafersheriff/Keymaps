@@ -12,7 +12,7 @@ void keyboard_post_init_user(void) {
 
 #ifdef OLED_ENABLE
 #include "../bongo.h"
-#include "../s75.h"
+// #include "../s75.h"
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   // if (is_keyboard_master())
@@ -22,7 +22,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
-    draw_s75();
+    // draw_s75();
+    draw_bongo();
   } else {
     draw_bongo();
   }

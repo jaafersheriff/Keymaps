@@ -26,7 +26,7 @@ struct pair_int_int
 };
 struct pair_int_int pressed_keys[KEYS_SIZE];
 struct pair_int_int pressed_keys_prev[KEYS_SIZE];
-uint8_t pressed_keys_index = 0;
+uint8_t bongo_pressed_key = 0;
 
 bool key_down = 0;
 
@@ -329,7 +329,7 @@ bool detect_key_down(void)
     }
 
     // fill cache with currently pressed keys
-    pressed_keys_index = 0;
+    bongo_pressed_key = 0;
     for (uint8_t x = 0; x < MATRIX_ROWS; x++)
     {
         for (uint8_t y = 0; y < MATRIX_COLS; y++)
@@ -337,15 +337,15 @@ bool detect_key_down(void)
             // is this key is currently down?
             if (((matrix_get_row(x) & (1 << y)) > 0))
             {
-                pressed_keys[pressed_keys_index].first = x+1; // adding 1 to the row/col so that we can use 0 as a null-check
-                pressed_keys[pressed_keys_index].second = y+1;
+                pressed_keys[bongo_pressed_key].first = x+1; // adding 1 to the row/col so that we can use 0 as a null-check
+                pressed_keys[bongo_pressed_key].second = y+1;
             }
             else
             {
-                pressed_keys[pressed_keys_index].first = 0;
-                pressed_keys[pressed_keys_index].second = 0;
+                pressed_keys[bongo_pressed_key].first = 0;
+                pressed_keys[bongo_pressed_key].second = 0;
             }
-            pressed_keys_index++;
+            bongo_pressed_key++;
         }
     }
 
